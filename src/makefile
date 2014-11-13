@@ -9,15 +9,17 @@ clean:
 	rm -Rf ../target
 	rm -rf *.o 
 
-nqueens: main.o state.o strategy.o
-	g++ main.o state.o strategy.o -o nqueens
+nqueens: main.o state.o strategy.o timer.o
+	g++ main.o state.o strategy.o timer.o -o nqueens
 
 main.o: 
-	g++ -c main.cpp
+	g++ -c -g main.cpp
 
 state.o: state.cpp state.h 
-	g++ -c state.cpp 
+	g++ -c -g state.cpp 
 
 strategy.o: strategy.cpp strategy.h state.h 
-	g++ -c strategy.cpp
+	g++ -c -g strategy.cpp
 
+timer.o: timer.cpp timer.h
+	g++ -c -g timer.cpp

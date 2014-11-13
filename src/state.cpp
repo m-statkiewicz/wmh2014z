@@ -66,9 +66,10 @@ std::ostream& operator<< (std::ostream &os, const State & s){
 	os<<"size="<<s.n<<"\n";	
 	for (int i=0; i<s.n; ++i)
 	{
+	os<<i<<"\\"<<s.arrangement[i]<<"\t";
 		for (int j=0; j<s.arrangement[i]; ++j)
 			os<<" ";
-	os<<"H\t"<<i<<"\\"<<s.arrangement[i]<<"\n";
+	os<<"H\n";
 	}
 	return os;
 };

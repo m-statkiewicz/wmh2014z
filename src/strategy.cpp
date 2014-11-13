@@ -5,7 +5,6 @@ State OnePlusLambdaStrategy::operator () (const int lambda, const State & initia
 
 	int iter=0;
 	State* best = new State(initialState);
-	std::cout<<"start eval. = "<<best->evaluate()<<"\n";
 	while (iter<iterations) {
 		State** l = new State* [lambda];
 		for(int li =0; li<lambda; ++li){
@@ -26,7 +25,6 @@ State OnePlusLambdaStrategy::operator () (const int lambda, const State & initia
 		}
 		delete l;
 		if (best->evaluate()==0){
-			std::cout<<"best eval. = "<<best->evaluate()<<"\n";
 			return best;
 		}
 		++iter;

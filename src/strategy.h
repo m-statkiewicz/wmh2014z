@@ -6,7 +6,6 @@
 #define STRATEGY
 
 #include<cstdlib>
-#include<iostream>
 
 #include"state.h"
 
