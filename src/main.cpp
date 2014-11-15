@@ -9,7 +9,7 @@ int main (){
 
 int n = 20;
 int lambda = 20;
-int iterations = 20;
+int iterations = 40;
 
 OnePlusLambdaStrategy strategy;
 Timer t;

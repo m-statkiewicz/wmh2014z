@@ -40,13 +40,13 @@ double Timer::delta() throw (TimerException) {
 	if (state != 's') {
 		throw TimerException(WRONG_STATE);
 	}
-	return (end_t.tv_sec - start_t.tv_sec) + (double) (end_t.tv_usec - start_t.tv_usec) / 1000000;
+	return (end_t.tv_sec - start_t.tv_sec) + (double) (end_t.tv_usec - start_t.tv_usec) / 1000;
 }
 std::string Timer::deltaToString()
 {
 	std::stringstream ss;
 	double sec = delta();
     ss.setf(std::ios_base::fixed, std::ios_base::floatfield);
-	ss << sec<<"s";
+	ss << sec<<"ms";
 	return ss.str();
 }
