@@ -5,7 +5,10 @@
 #include"strategy.h"
 #include"timer.h"
 
-int main (){
+#define VERSION 0.1
+
+int main (int argc, char **argv){
+
 
 int n = 20;
 int lambda = 20;
@@ -13,6 +16,22 @@ int iterations = 40;
 
 OnePlusLambdaStrategy strategy;
 Timer t;
+
+for (int i=1; i<argc; ++i){
+	if (std::string(argv[i])=="-n"){
+		std::stringstream str(argv[++i]);
+		str>>n;
+	}
+	if (std::string(argv[i])=="-l"){
+		std::stringstream str(argv[++i]);
+		str>>lambda;
+	}
+	if (std::string(argv[i])=="-i"){
+		std::stringstream str(argv[++i]);
+		str>>iterations;
+	}
+}
+
 
 State* init = new State(n);
 State* optstate = NULL;
@@ -32,3 +51,4 @@ delete init;
 delete optstate;
 return 0;
 }
+
