@@ -2,10 +2,10 @@
 
 #define SIGMA_CORRECTION 1
 
-State OnePlusLambdaStrategy::operator () (const int lambda, const State & initialState,const int iterations) const{
+State OnePlusLambdaStrategy::operator () (const int lambda, const State & initialState,const int iterations,const float sigma_,const int k) const{
 
 	const float corr=0.82;
-	float sigma=lambda/2;
+	float sigma=sigma_;
 	int iter=0;
 	State* best = new State(initialState);
 	int bestScore = best->evaluate();	
@@ -43,20 +43,20 @@ State OnePlusLambdaStrategy::operator () (const int lambda, const State & initia
 		}
 		delete l;
 
-		std::cout<<"iter = "<<iter<<std::endl;
-		std::cout<<"   sigma = "<<sigma<<std::endl;
-		std::cout<<"   dist  = "<<dist<<std::endl;
-		std::cout<<"   sum   = "<<betterMutationSum<<std::endl;
+	//	std::cout<<"iter = "<<iter<<std::endl;
+	//	std::cout<<"   sigma = "<<sigma<<std::endl;
+	//	std::cout<<"   dist  = "<<dist<<std::endl;
+	//	std::cout<<"   sum   = "<<betterMutationSum<<std::endl;
 
-		if (iter%SIGMA_CORRECTION==0){
-			float q = (float)betterMutationSum/(SIGMA_CORRECTION*lambda);
+		if (iter%k==0){
+			float q = (float)betterMutationSum/(k*lambda);
 			betterMutationSum=0;
-			std::cout<<"   q     = "<<q<<std::endl;
+	//		std::cout<<"   q     = "<<q<<std::endl;
 			if (q>0.2)
 				sigma/=corr;
 			if (q<0.2)
 				sigma*=corr;
-		std::cout<<"new sigma = "<<sigma<<std::endl;
+	//	std::cout<<"new sigma = "<<sigma<<std::endl;
 		}
 		if (bestScore==0){
 			return best;

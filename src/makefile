@@ -1,16 +1,15 @@
-all: clean nqueens install
+all: clean wmh.o install
 
 install:
 	mkdir ../target
 	mv *.o ../target
-	mv nqueens ../target
 
 clean:
 	rm -Rf ../target
 	rm -rf *.o 
 
-nqueens: main.o state.o strategy.o timer.o
-	g++ main.o state.o strategy.o timer.o -o nqueens
+wmh.o: main.o state.o strategy.o timer.o
+	g++ main.o state.o strategy.o timer.o -o wmh.o
 
 main.o: 
 	g++ -c -g main.cpp
