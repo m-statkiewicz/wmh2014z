@@ -57,7 +57,7 @@ t.stop();
 //std::cout<<*optstate<<std::endl;
 //std::cout<<std::endl<<"optimum eval. = "<<optstate->evaluate()<<std::endl;
 //std::cout<<"delta time = "<<t.deltaToString()<<std::endl<<std::endl;
-std::cout<<optstate->evaluate()<<';'<<t.delta()<<std::endl;
+std::cout<<optstate->evaluate()<<';'<<t.deltaToString()<<std::endl;
 
 delete init;
 delete optstate;
